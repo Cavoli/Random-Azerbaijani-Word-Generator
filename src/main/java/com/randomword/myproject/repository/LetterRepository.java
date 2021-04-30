@@ -5,9 +5,10 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.repository.Repository;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface LetterRepository extends Repository<Letter, Integer> {
 
-    public Collection<Letter> findAll() throws DataAccessException;
+    public List<Letter> findAll() throws DataAccessException;
 
 }

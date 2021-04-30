@@ -1,8 +1,10 @@
 package com.randomword.myproject.service.implementation;
 
+import com.randomword.myproject.enums.letterEnums.LetterType;
 import com.randomword.myproject.model.Letter;
 import com.randomword.myproject.repository.LetterRepository;
 import com.randomword.myproject.service.LetterService;
+import com.randomword.myproject.util.LetterHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -22,19 +24,31 @@ public class LetterServiceImpl implements LetterService {
     }
 
     @Override
-    public Collection<Letter> findAll() throws DataAccessException {
+    public List<Letter> findAll() throws DataAccessException {
         return letterRepository.findAll();
     }
 
     @Override
-    public Collection<Letter> findRandom(Integer count){
-        List<Letter> allLetters = new ArrayList<>(letterRepository.findAll());
+    public Collection<String> getRandomLetter(Integer count, LetterType letterType){
+        List<Letter> allLetters = letterRepository.findAll();
 
-        Set<Letter> letters = new HashSet<>();
-        Random rng = new Random();
-        while (letters.size() < count && letters.size() < allLetters.size()){
-            letters.add(allLetters.get(rng.nextInt(allLetters.size())));
+        switch (letterType){
+            case SMALL: return LetterHelper.randomSmallLetters(count, allLetters);
+            case BIG: return LetterHelper.randomBigLetter(count, allLetters);
+            case ALL: return LetterHelper.randomAnyLetter(count, allLetters);
         }
-        return letters;
+        return null;
+    }
+
+    @Override
+    public Collection<String> getTrueRandomLetter(Integer count, LetterType letterType){
+        List<Letter> allLetters = letterRepository.findAll();
+
+        switch (letterType){
+            case SMALL: return LetterHelper.trueRandomSmallLetters(count, allLetters);
+            case BIG: return LetterHelper.trueRandomBigLetter(count, allLetters);
+            case ALL: return LetterHelper.trueRandomAnyLetter(count,allLetters);
+        }
+        return null;
     }
 }

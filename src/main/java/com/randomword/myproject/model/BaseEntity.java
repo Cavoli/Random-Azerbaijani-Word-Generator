@@ -1,5 +1,6 @@
 package com.randomword.myproject.model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,7 @@ import javax.persistence.MappedSuperclass;
 public class BaseEntity {
 
     @Id
+    @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
 }
