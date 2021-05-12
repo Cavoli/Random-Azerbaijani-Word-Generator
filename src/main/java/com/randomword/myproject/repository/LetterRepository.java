@@ -11,4 +11,5 @@ public interface LetterRepository extends Repository<Letter, Integer> {
 
     public List<Letter> findAll() throws DataAccessException;
 
+
 }

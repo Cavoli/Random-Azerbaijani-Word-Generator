@@ -15,7 +15,7 @@ public class LetterHelper {
         int size = allLetters.size();
         while(letters.size() < size && letters.size() < count){
             int index = rng.nextInt(allLetters.size());
-            letters.add(allLetters.get(index).getLetter());
+            letters.add(allLetters.get(index).getLetter().toLowerCase());
             allLetters.remove(index);
         }
         return letters;
@@ -36,7 +36,7 @@ public class LetterHelper {
     public static Collection<String> randomAnyLetter(Integer count, List<Letter> allLetters){
         List<String> list = new ArrayList<>();
         for (Letter letter: allLetters) {
-            list.add(letter.getLetter());
+            list.add(letter.getLetter().toLowerCase());
             list.add(letter.getLetter().toUpperCase());
         }
         int size = list.size();
@@ -56,7 +56,7 @@ public class LetterHelper {
 
         while(letters.size() < count){
             int index = rng.nextInt(allLetters.size());
-            letters.add(allLetters.get(index).getLetter());
+            letters.add(allLetters.get(index).getLetter().toLowerCase());
         }
         return letters;
     }
@@ -75,7 +75,7 @@ public class LetterHelper {
     public static Collection<String> trueRandomAnyLetter(Integer count, List<Letter> allLetters){
         List<String> list = new ArrayList<>();
         for (Letter letter: allLetters) {
-            list.add(letter.getLetter());
+            list.add(letter.getLetter().toLowerCase());
             list.add(letter.getLetter().toUpperCase());
         }
 

@@ -38,12 +38,12 @@ public class LetterController {
         return new ResponseEntity<>(letters, HttpStatus.OK);
     }
 
-    @GetMapping(value = "", params = {"letterCount", "letterType","isTrueRandom"}, produces = "application/json")
-    @ResponseBody
+    //switch to hyphen case, add other http requests
+    @GetMapping(value = "", produces = "application/json")
     public ResponseEntity<Collection<String>> getRandomLetters
-            (@RequestParam("letterCount") int letterCount,
-             @RequestParam("letterType") LetterType letterType,
-             @RequestParam("isTrueRandom") boolean isTrueRandom){
+            (@RequestParam("letter-count") int letterCount,
+             @RequestParam("letter-type") LetterType letterType,
+             @RequestParam("true-random") boolean isTrueRandom){
 
         Collection<String> letters;
 
